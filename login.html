@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - SecureLocal</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1 class="logo">🔒 SecureLocal</h1>
+    <p class="tagline">Login to access your secure vault</p>
+    {% if msg %}
+      <p style="color: red;">{{ msg }}</p>
+    {% endif %}<br>
+
+    <form method="POST" action="/login">
+      <input class="text-box" type="text" name="master_username" placeholder="Username" required>
+      <input class="text-box" type="password" name="password" placeholder="Password" required>
+      <button type="submit" class="btn primary">Login</button>
+    </form>
+
+    <p style="margin-top: 1.5rem; color: #b5c2d1;">
+      Don’t have an account? <a href="/sign-up" style="color:#00d4ff; text-decoration:none;">Sign up</a>
+    </p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Vault - SecureLocal</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1 class="logo">🔒 SecureLocal</h1>
+    <p class="tagline">Welcome to your secure vault</p>
+    {% if msg %}
+      <p style="color: green;">{{ msg }}</p>
+    {% endif %}<br>
+    <!-- Saved Passwords Table -->
+    <section class="vault-section">
+      <h2>Your Saved Passwords</h2>
+      <table class="vault-table" style="margin: 0 auto;">
+        <thead>
+          <tr>
+            <th>Website</th>
+            <th>Username</th>
+            <th>Password</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% if passwords %}
+            {% for item in passwords %}
+              <tr style="text-align: center;">
+                <td>{{ item.website }}</td>
+                <td>{{ item.username }}</td>
+                <td>{{ item.password }}</td>
+              </tr>
+            {% endfor %}
+          {% else %}
+            <tr>
+              <td colspan="2" style="text-align:center; color:#b5c2d1;">
+                No saved passwords yet
+              </td>
+            </tr>
+          {% endif %}
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Add Password Button -->
+    <div style="text-align: center; margin-top: 2rem;">
+      <button class="btn primary" id="add-password-btn">Add Password</button>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

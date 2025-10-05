@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up - SecureLocal</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+  <div class="container">
+    <h1 class="logo">🔒 SecureLocal</h1>
+    <p class="tagline">Create a new account to secure your passwords</p>
+    {% if msg %}
+      <p style="color: red;">{{ msg }}</p>
+    {% endif %}<br>
+    <form method="POST" action="/sign-up" id="sign-up-form">
+      <input class="text-box" type="text" name="master_username" placeholder="Enter a username" required>
+      <input class="text-box" type="password" name="password" id="password" placeholder="Enter a password" required>
+      <input class="text-box" type="password" name="confirm_password" id="confirm-password" placeholder="Confirm password" required>
+      <button type="submit" class="btn primary" id="create_account">Create Account</button>
+    </form>
+
+    <p style="margin-top: 1.5rem; color: #b5c2d1;">
+      Already have an account? <a href="/login" style="color:#00d4ff; text-decoration:none;">Login</a>
+    </p>
+  </div>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
